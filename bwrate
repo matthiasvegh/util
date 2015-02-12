@@ -3,19 +3,19 @@
 TIMESPAN=1
 
 getGlobalRx() {
-    sum=0
+    local sum=0
     for iface in `ls /sys/class/net`; do
-	current=$(($current+`cat /sys/class/net/$iface/statistics/rx_bytes`))
+	sum=$(($sum+`cat /sys/class/net/$iface/statistics/rx_bytes`))
     done
-    echo $current
+    echo $sum
 }
 
 getGlobalTx() {
-    sum=0
+    local sum=0
     for iface in `ls /sys/class/net`; do
-	current=$(($current+`cat /sys/class/net/$iface/statistics/tx_bytes`))
+	sum=$(($sum+`cat /sys/class/net/$iface/statistics/tx_bytes`))
     done
-    echo $current
+    echo $sum
 }
 
 BR1=`getGlobalRx`
